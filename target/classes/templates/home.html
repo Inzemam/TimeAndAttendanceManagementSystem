@@ -14,10 +14,12 @@
     </a>
     </div>
     <div th:unless="${user == null}">
-    You can proceed to our valuable content <a href="content">
+    You can proceed to our valuable content <p th:text="${user.fullname}"/> <a href="content">
+    
         <button>content</button>
     </a>
     </div>
+    
 
 </div>
 
