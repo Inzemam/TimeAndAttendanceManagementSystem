@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<div th:include="fragments :: top" th:with="page='content'">Header</div>
+
+<div class="container">
+    <h3>Inside the Demo Web Application:</h3>
+    <p th:text="${message}"/>
+    Here you can access our valuable content.
+    <p>
+        For example, you can register new users: <a href="register">
+        <button><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Register</button>
+    </a>
+    </p>
+    Or you can <a href="logout">
+    <button><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout</button>
+</a>
+
+</div>
+
+<div th:replace="fragments :: bottom"></div>
+
+</body>
+</html>

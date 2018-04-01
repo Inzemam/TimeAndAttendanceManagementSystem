@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>CSCI 680 - Web Application Frameworks</title>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My project</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{/}">Home</a>
+                </li>
+                <li th:classappend="${module == 'tasks' ? 'active' : ''}">
+                    <a href="#" th:href="@{/task}">Tasks</a>
+                </li>
+            </ul>
+            <!--
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                    <a href="/signin" th:href="@{/signin}">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+                    </a>
+                </li>
+                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                </li>
+            </ul>
+            -->
+        </div>
+    </div>
+</div>
+
+some text
+
+<div th:fragment="bottom">
+    <div class="container">
+        Copyright 2018 Ege Consulting Inc.
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </div>
+</div>
+
+</body>
+</html>

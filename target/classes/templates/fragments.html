@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>CSCI 680 - Web Application Frameworks</title>
+</head>
+<body>
+<div th:fragment="top">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <strong class="navbar-brand default" style="color: white !important;">Spring Demo</strong>
+            </div>
+            <div class="navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li th:classappend="${page == 'home' ? 'active' : ''}">
+                        <a href="#" th:href="@{/}">Home</a>
+                    </li>
+                    <li th:classappend="${page == 'content' ? 'active' : ''}">
+                        <a href="#" th:href="@{/content}">Content</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li th:unless="${user == null}">
+                        <p class="navbar-text" th:text="${user.getFullName()} "></p>
+                    </li>
+                    <li th:if="${user == null}">
+                        <a href="/signin" th:href="@{/login}">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+                        </a>
+                    </li>
+                    <li th:unless="${user == null}">
+                        <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                        </a>
+                        <form style="visibility: hidden" id="form" method="post" action="#"
+                              th:action="@{/logout}"></form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+some text
+
+<div th:fragment="bottom">
+    <div class="container text-center">
+        <hr/>
+        <a href="//spring.io" target="_blank">Developed with Java Spring MVC Framework</a> &nbsp; &copy; 2018 CSCI 680 - Dr. Raimund K. Ege - NIU - CS
+    </div>
+</div>
+
+</body>
+</html>
