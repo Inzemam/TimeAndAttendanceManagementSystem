@@ -11,11 +11,75 @@ public class Employee {
 
     String username;
     String password;
-    //String type;
+    String type;
+    String fullname;
+    String address;
+    String email;
+    long phone_no;
+    String job_title;
+    int salary;
+    long SSN;
     
     
     
-    public int getId() {
+    public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public long getPhone_no() {
+		return phone_no;
+	}
+	public void setPhone_no(long phone_no) {
+		this.phone_no = phone_no;
+	}
+	public String getJob_title() {
+		return job_title;
+	}
+	public void setJob_title(String job_title) {
+		this.job_title = job_title;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	public long getSSN() {
+		return SSN;
+	}
+	public void setSSN(long sSN) {
+		SSN = sSN;
+	}
+	public Employee(int id, String username, String password, String type, String fullname, String address,
+			String email, long phone_no, String job_title, int salary, long sSN) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.type = type;
+		this.fullname = fullname;
+		this.address = address;
+		this.email = email;
+		this.phone_no = phone_no;
+		this.job_title = job_title;
+		this.salary = salary;
+		SSN = sSN;
+	}
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -39,13 +103,9 @@ public class Employee {
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
-	String fullname;
+
     Employee() {}
-    Employee(String f, String u, String p) {
-        fullname = f;
-        username = u;
-        password = p;
-    }
+   
     public String toString() {
         return fullname + "(" + username + ")";
     }
