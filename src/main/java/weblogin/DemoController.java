@@ -32,7 +32,9 @@ public class DemoController {
                                @RequestParam(value = "password") String password,
                                Model model) {
         Employee employee = userStore.findByUsername(userName);
+        
         if (employee != null) {
+        	System.out.println(userStore.existsById(employee.getId()));
             model.addAttribute("message", employee.fullname + ": welcome back !");
             model.addAttribute("Employee", employee);
             return "content";
