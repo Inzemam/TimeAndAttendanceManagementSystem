@@ -8,13 +8,13 @@
 <div class="container">
     <h3 class="display-3">Welcome to the Demo Web Application:</h3>
     <p th:text="${message}"/>
-    <div th:if="${user == null}">
+    <div th:if="${Employee == null}">
     To access our valuable content you need to <a href="login">
         <button><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in</button>
     </a>
     </div>
-    <div th:unless="${user == null}">
-    You can proceed to our valuable content <p th:text="${user.fullname}"/> <a href="content">
+    <div th:unless="${Employee == null}">
+    You can proceed to our valuable content <p th:text="${Employee.fullname}"/> <a href="content">
     
         <button>content</button>
     </a>

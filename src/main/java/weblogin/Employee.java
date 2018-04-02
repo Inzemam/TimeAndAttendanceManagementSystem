@@ -3,14 +3,18 @@ package weblogin;
 import javax.persistence.*;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="Employee")
+public class Employee {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     int id;
 
     String username;
     String password;
+    //String type;
+    
+    
+    
     public int getId() {
 		return id;
 	}
@@ -36,8 +40,8 @@ public class User {
 		this.fullname = fullname;
 	}
 	String fullname;
-    User() {}
-    User(String f, String u, String p) {
+    Employee() {}
+    Employee(String f, String u, String p) {
         fullname = f;
         username = u;
         password = p;

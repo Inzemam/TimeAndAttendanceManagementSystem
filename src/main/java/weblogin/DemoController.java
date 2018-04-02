@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes("Employee")
 public class DemoController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class DemoController {
 
     @RequestMapping("/content")
     public String content(Model model) {
-        if (model.asMap().containsKey(("user"))) {
+        if (model.asMap().containsKey(("Employee"))) {
             return "content";
         } else {
             return "home";
@@ -31,10 +31,10 @@ public class DemoController {
     public String processLogin(@RequestParam(value = "username") String userName,
                                @RequestParam(value = "password") String password,
                                Model model) {
-        User user = userStore.findByUsername(userName);
-        if (user != null) {
-            model.addAttribute("message", user.fullname + ": welcome back !");
-            model.addAttribute("user", user);
+        Employee employee = userStore.findByUsername(userName);
+        if (employee != null) {
+            model.addAttribute("message", employee.fullname + ": welcome back !");
+            model.addAttribute("Employee", employee);
             return "content";
         } else {
             model.addAttribute("message", "Username/password not found");
@@ -52,12 +52,12 @@ public class DemoController {
                                   @RequestParam(value = "username") String userName,
                                   @RequestParam(value = "password") String password,
                                   Model model) {
-        User user = userStore.findByUsername(userName);
-        if (user != null) {
+        Employee employee = userStore.findByUsername(userName);
+        if (employee != null) {
             model.addAttribute("message", "Username unavailable");
             return "register";
         } else {
-            userStore.save(new User(fullName, userName, password));
+            userStore.save(new Employee(fullName, userName, password));
             model.addAttribute("message", "New user registered: " + userName);
             return "home";
         }
@@ -65,7 +65,7 @@ public class DemoController {
 
     @GetMapping("/register")
     public String showRegister(Model model) {
-        if (model.asMap().containsKey("user")) {
+        if (model.asMap().containsKey("Employee")) {
             return "register";
         } else {
             model.addAttribute("message", "Please login first");
@@ -77,7 +77,7 @@ public class DemoController {
     public String logout(Model model, SessionStatus sessionStatus) {
         sessionStatus.setComplete();
         model.addAttribute("message", "You have been logged out");
-        model.addAttribute("user", null);
+        model.addAttribute("Employee", null);
         return "home";
     }
 
