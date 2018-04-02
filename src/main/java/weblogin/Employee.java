@@ -64,10 +64,10 @@ public class Employee {
 	public void setSSN(long sSN) {
 		SSN = sSN;
 	}
-	public Employee(int id, String username, String password, String type, String fullname, String address,
+	public Employee(String username, String password, String type, String fullname, String address,
 			String email, long phone_no, String job_title, int salary, long sSN) {
-		super();
-		this.id = id;
+		//super();
+		//this.id = id;
 		this.username = username;
 		this.password = password;
 		this.type = type;

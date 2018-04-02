@@ -51,14 +51,21 @@ public class DemoController {
     public String processRegister(@RequestParam(value = "fullname") String fullName,
                                   @RequestParam(value = "username") String userName,
                                   @RequestParam(value = "password") String password,
+                                  @RequestParam(value = "type") String type,
+                                  @RequestParam(value= "address") String address,
+                                  @RequestParam(value="email") String email,
+                                  @RequestParam(value="phoneno") long phone_no,
+                                  @RequestParam(value="jobtitle") String job_title,
+                                  @RequestParam(value="salary") int salary,
+                                  @RequestParam(value="sSn") long sSN,
                                   Model model) {
         Employee employee = userStore.findByUsername(userName);
         if (employee != null) {
-            model.addAttribute("message", "Username unavailable");
+            model.addAttribute("message", "Username unavailable"		);
             return "register";
         } else {
-            userStore.save(new Employee(fullName, userName, password));
-            model.addAttribute("message", "New user registered: " + userName);
+            userStore.save(new Employee(userName, password, type, fullName, address, email, phone_no, job_title, salary, sSN));
+            model.addAttribute("message", "New Employee Added: " + userName);
             return "home";
         }
     }
