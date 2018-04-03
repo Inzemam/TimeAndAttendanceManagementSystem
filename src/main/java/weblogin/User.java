@@ -21,6 +21,8 @@ public abstract class User {
 	private String username;
 	@NotNull
 	private String password;
+	
+	
 	public int getUser_id() {
 		return user_id;
 	}
