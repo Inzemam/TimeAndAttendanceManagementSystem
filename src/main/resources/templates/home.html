@@ -6,15 +6,15 @@
 <div th:include="fragments :: top" th:with="page=${'home'}"></div>
 
 <div class="container">
-    <h3 class="display-3">Welcome to the Demo Web Application:</h3>
+    <h3 class="display-3">Welcome to the Time and Attendance Management System:</h3>
     <p th:text="${message}"/>
-    <div th:if="${Employee == null}">
+    <div th:if="${User == null}">
     To access our valuable content you need to <a href="login">
         <button><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in</button>
     </a>
     </div>
-    <div th:unless="${Employee == null}">
-    You can proceed to our valuable content <p th:text="${Employee.fullname}"/> <a href="content">
+    <div th:unless="${User == null}">
+    You can proceed to our valuable content <p th:text="${User.username}"/> <a href="content">
     
         <button>content</button>
     </a>

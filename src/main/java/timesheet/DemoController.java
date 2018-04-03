@@ -42,7 +42,7 @@ public class DemoController {
 
     @RequestMapping("/content")
     public String content(Model model) {
-        if (model.asMap().containsKey(("user"))) {
+        if (model.asMap().containsKey(("User"))) {
             return "content";
         } else {
             return "home";
@@ -88,19 +88,46 @@ public class DemoController {
     public String showLogin() {
         return "login";
     }
+    
+    @PostMapping("/supervisorregister")
+    public String processSupervisorRegister(@RequestParam(value = "fullname") String fullName,
+            @RequestParam(value = "username") String userName,
+            @RequestParam(value = "password") String password,
+            @RequestParam(value = "type") String user_type,Model model) {
+    	try {
+    		User user = userStore.findByUsername(userName);
+            if (user != null) {
+                model.addAttribute("message", "Username unavailable");
+                return "register";
+            } else {
+            	if(user_type=="employee") {
+            		 userStore.save(new Supervisor(userName, password, fullName));
+                     model.addAttribute("message", "New Supervisor Added: " + userName);
+                     
+            	}
+            	else {
+            		userStore.save(new Admin(userName, password, fullName));
+            	}
+            	return "home";
+            }
+    		
+    	}catch(Exception ex) {
+    		return "user not found"+ex.getMessage();
+    	}
+    }
 
     @PostMapping("/register")
     public String processRegister(@RequestParam(value = "fullname") String fullName,
                                   @RequestParam(value = "username") String userName,
                                   @RequestParam(value = "password") String password,
-                                  @RequestParam(value = "type") String type,
+                                  @RequestParam(value = "type") String user_type,
                                   @RequestParam(value= "address") String address,
                                   @RequestParam(value="email") String email,
                                   @RequestParam(value="phoneno") long phone_no,
                                   @RequestParam(value="jobtitle") String job_title,
                                   @RequestParam(value="salary") int salary,
                                   @RequestParam(value="sSn") long sSN,
-                                  @RequestParam(value="user_type") String user_type,
+                                  //@RequestParam(value="user_type") String user_type,
                                   Model model) {
     	try {
     		User user = userStore.findByUsername(userName);
@@ -135,7 +162,19 @@ public class DemoController {
             return "home";
         }
     }
-
+    
+    
+    @GetMapping("/supervisorregister")
+    public String showSupervisorRegister(Model model) {
+        if (model.asMap().containsKey("User")) {
+            return "supervisorregister";
+        } else {
+        	
+            model.addAttribute("message", "Please login first"+model.asMap());
+            return "home";
+        }
+    }
+    
     @RequestMapping("/logout")
     public String logout(Model model, SessionStatus sessionStatus) {
         sessionStatus.setComplete();
