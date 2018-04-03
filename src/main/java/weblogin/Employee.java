@@ -3,15 +3,10 @@ package weblogin;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Employee")
-public class Employee {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    int id;
-
-    String username;
-    String password;
-    String type;
+//@Table(name="Employee")
+public class Employee extends User{
+    
+    //String user_type;
     String fullname;
     String address;
     String email;
@@ -19,14 +14,23 @@ public class Employee {
     String job_title;
     int salary;
     long SSN;
-    
-    
-    
-    public String getType() {
-		return type;
+	public Employee(String username, String password, String fullname, String address, String email, long phone_no,
+			String job_title, int salary, long sSN) {
+		super(username, password);
+		this.fullname = fullname;
+		this.address = address;
+		this.email = email;
+		this.phone_no = phone_no;
+		this.job_title = job_title;
+		this.salary = salary;
+		SSN = sSN;
 	}
-	public void setType(String type) {
-		this.type = type;
+	
+	public String getFullname() {
+		return fullname;
+	}
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 	public String getAddress() {
 		return address;
@@ -64,50 +68,12 @@ public class Employee {
 	public void setSSN(long sSN) {
 		SSN = sSN;
 	}
-	public Employee(String username, String password, String type, String fullname, String address,
-			String email, long phone_no, String job_title, int salary, long sSN) {
-		//super();
-		//this.id = id;
-		this.username = username;
-		this.password = password;
-		this.type = type;
-		this.fullname = fullname;
-		this.address = address;
-		this.email = email;
-		this.phone_no = phone_no;
-		this.job_title = job_title;
-		this.salary = salary;
-		SSN = sSN;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getFullname() {
-		return fullname;
-	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
-	}
 
-    Employee() {}
-   
-    public String toString() {
-        return fullname + "(" + username + ")";
-    }
-    public String getFullName() { return fullname;}
+	@Override
+	public String toString() {
+		return "Employee [fullname=" + fullname + ", address=" + address + ", email=" + email + ", phone_no=" + phone_no
+				+ ", job_title=" + job_title + ", salary=" + salary + ", SSN=" + SSN + "]";
+	}
+    
+    
 }

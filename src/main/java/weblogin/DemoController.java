@@ -64,7 +64,7 @@ public class DemoController {
             model.addAttribute("message", "Username unavailable");
             return "register";
         } else {
-            userStore.save(new Employee(userName, password, type, fullName, address, email, phone_no, job_title, salary, sSN));
+            userStore.save(new Employee(userName, password,fullName, address, email, phone_no, job_title, salary, sSN));
             model.addAttribute("message", "New Employee Added: " + userName);
             return "home";
         }
