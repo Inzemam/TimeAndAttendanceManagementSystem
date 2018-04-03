@@ -1,13 +1,20 @@
-package weblogin;
+package timesheet.models;
 
 import javax.persistence.*;
 
 
 @Entity
 //@Table(name="supervisor")
+@DiscriminatorValue("supervisor")
 public class Supervisor extends User{
 
 	String fullname;
+	
+	
+
+	public Supervisor() {
+		super();
+	}
 
 	public Supervisor(String username, String password, String fullname) {
 		super(username, password);

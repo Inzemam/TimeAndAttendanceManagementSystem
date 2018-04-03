@@ -1,4 +1,4 @@
-package weblogin;
+package timesheet.models;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package weblogin;
+package timesheet.models;
 
 import java.util.ArrayList;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package weblogin;
+package timesheet.models;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="users")
+@Table(name="user")
 @Inheritance
 @DiscriminatorColumn(name="user_type")
 public abstract class User {
@@ -23,6 +23,9 @@ public abstract class User {
 	private String password;
 	
 	
+	public User() {
+		super();
+	}
 	public int getUser_id() {
 		return user_id;
 	}

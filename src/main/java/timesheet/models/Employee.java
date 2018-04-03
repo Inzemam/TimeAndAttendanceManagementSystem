@@ -1,9 +1,10 @@
-package weblogin;
+package timesheet.models;
 
 import javax.persistence.*;
 
 @Entity
 //@Table(name="Employee")
+@DiscriminatorValue("employee")
 public class Employee extends User{
     
     //String user_type;
@@ -14,6 +15,13 @@ public class Employee extends User{
     String job_title;
     int salary;
     long SSN;
+    
+    
+    
+	public Employee() {
+		super();
+	}
+
 	public Employee(String username, String password, String fullname, String address, String email, long phone_no,
 			String job_title, int salary, long sSN) {
 		super(username, password);
@@ -23,7 +31,7 @@ public class Employee extends User{
 		this.phone_no = phone_no;
 		this.job_title = job_title;
 		this.salary = salary;
-		SSN = sSN;
+		this.SSN = sSN;
 	}
 	
 	public String getFullname() {
