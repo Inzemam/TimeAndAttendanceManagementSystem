@@ -61,7 +61,7 @@ public class DemoController {
                                   Model model) {
         Employee employee = userStore.findByUsername(userName);
         if (employee != null) {
-            model.addAttribute("message", "Username unavailable"		);
+            model.addAttribute("message", "Username unavailable");
             return "register";
         } else {
             userStore.save(new Employee(userName, password, type, fullName, address, email, phone_no, job_title, salary, sSN));
