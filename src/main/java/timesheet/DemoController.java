@@ -102,21 +102,27 @@ public class DemoController {
                                   @RequestParam(value="sSn") long sSN,
                                   @RequestParam(value="user_type") String user_type,
                                   Model model) {
-        User user = userStore.findByUsername(userName);
-        if (user != null) {
-            model.addAttribute("message", "Username unavailable");
-            return "register";
-        } else {
-        	if(user_type=="employee") {
-        		 userStore.save(new Employee(userName, password,fullName, address, email, phone_no, job_title, salary, sSN));
-                 model.addAttribute("message", "New Employee Added: " + userName);
-                 
-        	}
-        	else {
-        		userStore.save(new Admin(userName, password, fullName));
-        	}
-        	return "home";
-        }
+    	try {
+    		User user = userStore.findByUsername(userName);
+            if (user != null) {
+                model.addAttribute("message", "Username unavailable");
+                return "register";
+            } else {
+            	if(user_type=="employee") {
+            		 userStore.save(new Employee(userName, password,fullName, address, email, phone_no, job_title, salary, sSN));
+                     model.addAttribute("message", "New Employee Added: " + userName);
+                     
+            	}
+            	else {
+            		userStore.save(new Admin(userName, password, fullName));
+            	}
+            	return "home";
+            }
+    		
+    	}catch(Exception ex) {
+    		return "user not found"+ex.getMessage();
+    	}
+        
     }
 
     @GetMapping("/register")
